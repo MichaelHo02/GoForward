@@ -8,8 +8,30 @@
 import SwiftUI
 
 struct LeaderboardView: View {
+    @EnvironmentObject var pageVM: PageViewModel
+    @StateObject var leaderboardVM = LeaderboardViewModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            VStack {
+                List {
+                    Spacer()
+                    ForEach(leaderboardVM.users) { user in
+                        LeaderboardRow(user: user)
+                    }
+                }
+                .listStyle(.sidebar)
+            }
+            
+            VStack {
+                Header(title: "Leaderboard")
+                Spacer()
+            }
+        }
+        .onAppear {
+            leaderboardVM.playBGMusic()
+            leaderboardVM.getAllUsers()
+        }
     }
 }
 

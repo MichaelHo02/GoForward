@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MenuView: View {
-    @EnvironmentObject var contentVM: ContentViewModel
+    @EnvironmentObject var pageVM: PageViewModel
     @Environment(\.scenePhase) var scenePhase
     
     let resumeLabel = Label("Resume", systemImage: "gamecontroller")
@@ -22,21 +22,21 @@ struct MenuView: View {
     
     var body: some View {
         VStack {
-            if contentVM.isGameSaved {
-                Button(action: contentVM.visitResumePage) { resumeLabel }
+            if pageVM.isGameSaved {
+                Button(action: pageVM.visitResumePage) { resumeLabel }
             }
-            Button(action: contentVM.visitGamePage) { playGameLabel }
-            Button(action: contentVM.visitLeaderboardPage) { leaderboardLabel }
-            Button(action: contentVM.visitHowToPlayPage) { howToPlayLabel }
+            Button(action: pageVM.visitGamePage) { playGameLabel }
+            Button(action: pageVM.visitLeaderboardPage) { leaderboardLabel }
+            Button(action: pageVM.visitHowToPlayPage) { howToPlayLabel }
         }
         .buttonStyle(.borderedProminent)
-        .onAppear(perform: contentVM.playBGMusic)
+        .onAppear(perform: pageVM.playBGMusic)
         .onChange(of: scenePhase) { newPhase in
             switch (newPhase) {
             case .background, .inactive:
-                contentVM.stopBGMusic()
+                pageVM.stopBGMusic()
             case .active:
-                contentVM.playBGMusic()
+                pageVM.playBGMusic()
             @unknown default:
                 fatalError()
             }
@@ -47,6 +47,6 @@ struct MenuView: View {
 struct MenuView_Previews: PreviewProvider {
     static var previews: some View {
         MenuView()
-            .environmentObject(ContentViewModel())
+            .environmentObject(PageViewModel())
     }
 }

@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var contentVM = ContentViewModel()
+    @StateObject private var pageVM = PageViewModel()
     
     var body: some View {
         Group {
-            switch contentVM.currentPage {
+            switch pageVM.currentPage {
             case .Menu:
                 MenuView()
                     .modifier(ViewTransition(edge: .leading))
@@ -30,7 +30,7 @@ struct ContentView: View {
                     .modifier(ViewTransition(edge: .trailing))
             }
         }
-        .environmentObject(contentVM)
+        .environmentObject(pageVM)
     }
 }
 

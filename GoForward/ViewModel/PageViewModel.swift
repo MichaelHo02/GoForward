@@ -12,11 +12,17 @@ enum Page {
     case Menu, Resume, Game, Leaderboard, HowToPlay
 }
 
-final class ContentViewModel: ObservableObject {
+final class PageViewModel: ObservableObject {
     @Published var currentPage: Page = .Menu
     
     var isGameSaved: Bool {
         UserDefaults.standard.data(forKey: dataKey) != nil
+    }
+    
+    func visitMenu() {
+        withAnimation {
+            currentPage = .Menu
+        }
     }
     
     func visitResumePage() {
