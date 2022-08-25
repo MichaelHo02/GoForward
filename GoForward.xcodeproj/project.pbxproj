@@ -11,6 +11,35 @@
 		C1E65B0928B7A01500BFDD46 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E65B0828B7A01500BFDD46 /* ContentView.swift */; };
 		C1E65B0B28B7A01600BFDD46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1E65B0A28B7A01600BFDD46 /* Assets.xcassets */; };
 		C1E65B0E28B7A01600BFDD46 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1E65B0D28B7A01600BFDD46 /* Preview Assets.xcassets */; };
+		C1E65B2928B7A15000BFDD46 /* Modern8.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C1E65B1B28B7A14F00BFDD46 /* Modern8.mp3 */; };
+		C1E65B2A28B7A15000BFDD46 /* cardPlace1.wav in Resources */ = {isa = PBXBuildFile; fileRef = C1E65B1C28B7A14F00BFDD46 /* cardPlace1.wav */; };
+		C1E65B2B28B7A15000BFDD46 /* go.wav in Resources */ = {isa = PBXBuildFile; fileRef = C1E65B1D28B7A14F00BFDD46 /* go.wav */; };
+		C1E65B2C28B7A15000BFDD46 /* hurry_up.wav in Resources */ = {isa = PBXBuildFile; fileRef = C1E65B1E28B7A14F00BFDD46 /* hurry_up.wav */; };
+		C1E65B2D28B7A15000BFDD46 /* cardShove1.wav in Resources */ = {isa = PBXBuildFile; fileRef = C1E65B1F28B7A14F00BFDD46 /* cardShove1.wav */; };
+		C1E65B2E28B7A15000BFDD46 /* you_win.wav in Resources */ = {isa = PBXBuildFile; fileRef = C1E65B2028B7A14F00BFDD46 /* you_win.wav */; };
+		C1E65B2F28B7A15000BFDD46 /* SomberRomance.wav in Resources */ = {isa = PBXBuildFile; fileRef = C1E65B2128B7A15000BFDD46 /* SomberRomance.wav */; };
+		C1E65B3028B7A15000BFDD46 /* waiting.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C1E65B2228B7A15000BFDD46 /* waiting.mp3 */; };
+		C1E65B3128B7A15000BFDD46 /* cardShuffle.wav in Resources */ = {isa = PBXBuildFile; fileRef = C1E65B2328B7A15000BFDD46 /* cardShuffle.wav */; };
+		C1E65B3228B7A15000BFDD46 /* waiting1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C1E65B2428B7A15000BFDD46 /* waiting1.mp3 */; };
+		C1E65B3328B7A15000BFDD46 /* you_lose.wav in Resources */ = {isa = PBXBuildFile; fileRef = C1E65B2528B7A15000BFDD46 /* you_lose.wav */; };
+		C1E65B3428B7A15000BFDD46 /* Minimalist4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C1E65B2628B7A15000BFDD46 /* Minimalist4.mp3 */; };
+		C1E65B3528B7A15000BFDD46 /* theme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C1E65B2728B7A15000BFDD46 /* theme.mp3 */; };
+		C1E65B3628B7A15000BFDD46 /* cardSlide1.wav in Resources */ = {isa = PBXBuildFile; fileRef = C1E65B2828B7A15000BFDD46 /* cardSlide1.wav */; };
+		C1E65B3E28B7A2BB00BFDD46 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E65B3D28B7A2BB00BFDD46 /* Card.swift */; };
+		C1E65B4028B7A2FE00BFDD46 /* DeckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E65B3F28B7A2FE00BFDD46 /* DeckModel.swift */; };
+		C1E65B4228B7A35B00BFDD46 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E65B4128B7A35B00BFDD46 /* Stack.swift */; };
+		C1E65B4428B7A3A800BFDD46 /* DiscardHand.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E65B4328B7A3A800BFDD46 /* DiscardHand.swift */; };
+		C1E65B4628B7A3E200BFDD46 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E65B4528B7A3E200BFDD46 /* Player.swift */; };
+		C1E65B4828B7A45E00BFDD46 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E65B4728B7A45E00BFDD46 /* GameModel.swift */; };
+		C1E65B4B28B7A59300BFDD46 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C1E65B4928B7A59300BFDD46 /* Model.xcdatamodeld */; };
+		C1E65B5528B7A67B00BFDD46 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E65B5428B7A67B00BFDD46 /* MenuView.swift */; };
+		C1E65B5728B7A68200BFDD46 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E65B5628B7A68200BFDD46 /* GameView.swift */; };
+		C1E65B5928B7A69900BFDD46 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E65B5828B7A69900BFDD46 /* LeaderboardView.swift */; };
+		C1E65B5B28B7A6A500BFDD46 /* HowToPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E65B5A28B7A6A500BFDD46 /* HowToPlayView.swift */; };
+		C1E65B5D28B7A70C00BFDD46 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E65B5C28B7A70C00BFDD46 /* ContentViewModel.swift */; };
+		C1E65B5F28B7A80800BFDD46 /* GlobalStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E65B5E28B7A80800BFDD46 /* GlobalStyle.swift */; };
+		C1E65B6328B7A9D400BFDD46 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E65B6228B7A9D400BFDD46 /* Util.swift */; };
+		C1E65B6528B7AEAD00BFDD46 /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E65B6428B7AEAD00BFDD46 /* Sound.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +48,35 @@
 		C1E65B0828B7A01500BFDD46 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C1E65B0A28B7A01600BFDD46 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C1E65B0D28B7A01600BFDD46 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C1E65B1B28B7A14F00BFDD46 /* Modern8.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Modern8.mp3; sourceTree = "<group>"; };
+		C1E65B1C28B7A14F00BFDD46 /* cardPlace1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cardPlace1.wav; sourceTree = "<group>"; };
+		C1E65B1D28B7A14F00BFDD46 /* go.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = go.wav; sourceTree = "<group>"; };
+		C1E65B1E28B7A14F00BFDD46 /* hurry_up.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hurry_up.wav; sourceTree = "<group>"; };
+		C1E65B1F28B7A14F00BFDD46 /* cardShove1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cardShove1.wav; sourceTree = "<group>"; };
+		C1E65B2028B7A14F00BFDD46 /* you_win.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = you_win.wav; sourceTree = "<group>"; };
+		C1E65B2128B7A15000BFDD46 /* SomberRomance.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = SomberRomance.wav; sourceTree = "<group>"; };
+		C1E65B2228B7A15000BFDD46 /* waiting.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = waiting.mp3; sourceTree = "<group>"; };
+		C1E65B2328B7A15000BFDD46 /* cardShuffle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cardShuffle.wav; sourceTree = "<group>"; };
+		C1E65B2428B7A15000BFDD46 /* waiting1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = waiting1.mp3; sourceTree = "<group>"; };
+		C1E65B2528B7A15000BFDD46 /* you_lose.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = you_lose.wav; sourceTree = "<group>"; };
+		C1E65B2628B7A15000BFDD46 /* Minimalist4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Minimalist4.mp3; sourceTree = "<group>"; };
+		C1E65B2728B7A15000BFDD46 /* theme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = theme.mp3; sourceTree = "<group>"; };
+		C1E65B2828B7A15000BFDD46 /* cardSlide1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cardSlide1.wav; sourceTree = "<group>"; };
+		C1E65B3D28B7A2BB00BFDD46 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		C1E65B3F28B7A2FE00BFDD46 /* DeckModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckModel.swift; sourceTree = "<group>"; };
+		C1E65B4128B7A35B00BFDD46 /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
+		C1E65B4328B7A3A800BFDD46 /* DiscardHand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscardHand.swift; sourceTree = "<group>"; };
+		C1E65B4528B7A3E200BFDD46 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		C1E65B4728B7A45E00BFDD46 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
+		C1E65B4A28B7A59300BFDD46 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		C1E65B5428B7A67B00BFDD46 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		C1E65B5628B7A68200BFDD46 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		C1E65B5828B7A69900BFDD46 /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
+		C1E65B5A28B7A6A500BFDD46 /* HowToPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayView.swift; sourceTree = "<group>"; };
+		C1E65B5C28B7A70C00BFDD46 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		C1E65B5E28B7A80800BFDD46 /* GlobalStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalStyle.swift; sourceTree = "<group>"; };
+		C1E65B6228B7A9D400BFDD46 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		C1E65B6428B7AEAD00BFDD46 /* Sound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +109,13 @@
 		C1E65B0528B7A01500BFDD46 /* GoForward */ = {
 			isa = PBXGroup;
 			children = (
+				C1E65B1A28B7A14100BFDD46 /* Sound */,
+				C1E65B1928B7A12B00BFDD46 /* Style */,
+				C1E65B1828B7A12300BFDD46 /* Util */,
+				C1E65B1728B7A11900BFDD46 /* ViewModel */,
+				C1E65B1628B7A11000BFDD46 /* Model */,
+				C1E65B1428B7A10100BFDD46 /* View */,
 				C1E65B0628B7A01500BFDD46 /* GoForwardApp.swift */,
-				C1E65B0828B7A01500BFDD46 /* ContentView.swift */,
 				C1E65B0A28B7A01600BFDD46 /* Assets.xcassets */,
 				C1E65B0C28B7A01600BFDD46 /* Preview Content */,
 			);
@@ -65,6 +128,94 @@
 				C1E65B0D28B7A01600BFDD46 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C1E65B1428B7A10100BFDD46 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C1E65B4D28B7A63A00BFDD46 /* Main */,
+				C1E65B4C28B7A60900BFDD46 /* Element */,
+				C1E65B0828B7A01500BFDD46 /* ContentView.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		C1E65B1628B7A11000BFDD46 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C1E65B4528B7A3E200BFDD46 /* Player.swift */,
+				C1E65B3D28B7A2BB00BFDD46 /* Card.swift */,
+				C1E65B4128B7A35B00BFDD46 /* Stack.swift */,
+				C1E65B4328B7A3A800BFDD46 /* DiscardHand.swift */,
+				C1E65B3F28B7A2FE00BFDD46 /* DeckModel.swift */,
+				C1E65B4728B7A45E00BFDD46 /* GameModel.swift */,
+				C1E65B4928B7A59300BFDD46 /* Model.xcdatamodeld */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		C1E65B1728B7A11900BFDD46 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C1E65B5C28B7A70C00BFDD46 /* ContentViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C1E65B1828B7A12300BFDD46 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				C1E65B6228B7A9D400BFDD46 /* Util.swift */,
+				C1E65B6428B7AEAD00BFDD46 /* Sound.swift */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
+		C1E65B1928B7A12B00BFDD46 /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				C1E65B5E28B7A80800BFDD46 /* GlobalStyle.swift */,
+			);
+			path = Style;
+			sourceTree = "<group>";
+		};
+		C1E65B1A28B7A14100BFDD46 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				C1E65B1C28B7A14F00BFDD46 /* cardPlace1.wav */,
+				C1E65B1F28B7A14F00BFDD46 /* cardShove1.wav */,
+				C1E65B2328B7A15000BFDD46 /* cardShuffle.wav */,
+				C1E65B2828B7A15000BFDD46 /* cardSlide1.wav */,
+				C1E65B1D28B7A14F00BFDD46 /* go.wav */,
+				C1E65B1E28B7A14F00BFDD46 /* hurry_up.wav */,
+				C1E65B2628B7A15000BFDD46 /* Minimalist4.mp3 */,
+				C1E65B1B28B7A14F00BFDD46 /* Modern8.mp3 */,
+				C1E65B2128B7A15000BFDD46 /* SomberRomance.wav */,
+				C1E65B2728B7A15000BFDD46 /* theme.mp3 */,
+				C1E65B2228B7A15000BFDD46 /* waiting.mp3 */,
+				C1E65B2428B7A15000BFDD46 /* waiting1.mp3 */,
+				C1E65B2528B7A15000BFDD46 /* you_lose.wav */,
+				C1E65B2028B7A14F00BFDD46 /* you_win.wav */,
+			);
+			path = Sound;
+			sourceTree = "<group>";
+		};
+		C1E65B4C28B7A60900BFDD46 /* Element */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Element;
+			sourceTree = "<group>";
+		};
+		C1E65B4D28B7A63A00BFDD46 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				C1E65B5428B7A67B00BFDD46 /* MenuView.swift */,
+				C1E65B5628B7A68200BFDD46 /* GameView.swift */,
+				C1E65B5828B7A69900BFDD46 /* LeaderboardView.swift */,
+				C1E65B5A28B7A6A500BFDD46 /* HowToPlayView.swift */,
+			);
+			name = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,8 +276,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1E65B3128B7A15000BFDD46 /* cardShuffle.wav in Resources */,
+				C1E65B2B28B7A15000BFDD46 /* go.wav in Resources */,
+				C1E65B3428B7A15000BFDD46 /* Minimalist4.mp3 in Resources */,
+				C1E65B3228B7A15000BFDD46 /* waiting1.mp3 in Resources */,
+				C1E65B2E28B7A15000BFDD46 /* you_win.wav in Resources */,
+				C1E65B2928B7A15000BFDD46 /* Modern8.mp3 in Resources */,
+				C1E65B3628B7A15000BFDD46 /* cardSlide1.wav in Resources */,
+				C1E65B3328B7A15000BFDD46 /* you_lose.wav in Resources */,
+				C1E65B2D28B7A15000BFDD46 /* cardShove1.wav in Resources */,
+				C1E65B2C28B7A15000BFDD46 /* hurry_up.wav in Resources */,
 				C1E65B0E28B7A01600BFDD46 /* Preview Assets.xcassets in Resources */,
+				C1E65B2A28B7A15000BFDD46 /* cardPlace1.wav in Resources */,
+				C1E65B2F28B7A15000BFDD46 /* SomberRomance.wav in Resources */,
+				C1E65B3028B7A15000BFDD46 /* waiting.mp3 in Resources */,
 				C1E65B0B28B7A01600BFDD46 /* Assets.xcassets in Resources */,
+				C1E65B3528B7A15000BFDD46 /* theme.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +303,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1E65B0928B7A01500BFDD46 /* ContentView.swift in Sources */,
+				C1E65B4228B7A35B00BFDD46 /* Stack.swift in Sources */,
+				C1E65B3E28B7A2BB00BFDD46 /* Card.swift in Sources */,
+				C1E65B5F28B7A80800BFDD46 /* GlobalStyle.swift in Sources */,
+				C1E65B4028B7A2FE00BFDD46 /* DeckModel.swift in Sources */,
+				C1E65B5928B7A69900BFDD46 /* LeaderboardView.swift in Sources */,
+				C1E65B6328B7A9D400BFDD46 /* Util.swift in Sources */,
+				C1E65B6528B7AEAD00BFDD46 /* Sound.swift in Sources */,
+				C1E65B4628B7A3E200BFDD46 /* Player.swift in Sources */,
+				C1E65B5728B7A68200BFDD46 /* GameView.swift in Sources */,
+				C1E65B5528B7A67B00BFDD46 /* MenuView.swift in Sources */,
+				C1E65B4B28B7A59300BFDD46 /* Model.xcdatamodeld in Sources */,
+				C1E65B4828B7A45E00BFDD46 /* GameModel.swift in Sources */,
+				C1E65B5D28B7A70C00BFDD46 /* ContentViewModel.swift in Sources */,
 				C1E65B0728B7A01500BFDD46 /* GoForwardApp.swift in Sources */,
+				C1E65B5B28B7A6A500BFDD46 /* HowToPlayView.swift in Sources */,
+				C1E65B4428B7A3A800BFDD46 /* DiscardHand.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +519,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C1E65B4928B7A59300BFDD46 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C1E65B4A28B7A59300BFDD46 /* Model.xcdatamodel */,
+			);
+			currentVersion = C1E65B4A28B7A59300BFDD46 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C1E65AFB28B7A01500BFDD46 /* Project object */;
 }
