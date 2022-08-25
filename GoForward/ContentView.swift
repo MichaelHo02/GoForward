@@ -15,12 +15,12 @@ struct ContentView: View {
             switch pageVM.currentPage {
             case .Menu:
                 MenuView()
-                    .modifier(ViewTransition(edge: .leading))
+                    .transition(.move(edge: .leading).combined(with: .opacity))
             case .Resume:
-                GameView()
+                GameView(isNewGame: false)
                     .modifier(ViewTransition(edge: .trailing))
             case .Game:
-                GameView()
+                GameView(isNewGame: true)
                     .modifier(ViewTransition(edge: .trailing))
             case .Leaderboard:
                 LeaderboardView()
