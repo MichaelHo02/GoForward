@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct GameModel {
+struct GameModel: Codable {
     private var discardedHands = [DiscardHand]()
     private(set) var players = [Player]()
     var currentPlayerIdx = 0
@@ -303,4 +303,36 @@ struct GameModel {
         skipRound = Array(repeating: false, count: players.count)
     }
     
+    enum CodingKeys: String, CodingKey {
+        case discardedHands
+        case players
+        case currentPlayerIdx
+        case firstPlayer
+        case gameEnded
+        case isHumanWin
+        case skipRound
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.discardedHands = try container.decode([DiscardHand].self, forKey: .discardedHands)
+        self.players = try container.decode([Player].self, forKey: .players)
+        self.currentPlayerIdx = try container.decode(Int.self, forKey: .currentPlayerIdx)
+        self.firstPlayer = try container.decode(Bool.self, forKey: .firstPlayer)
+        self.gameEnded = try container.decode(Bool.self, forKey: .gameEnded)
+        self.isHumanWin = try container.decode(Bool.self, forKey: .isHumanWin)
+        self.skipRound = try container.decode([Bool].self, forKey: .skipRound)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(discardedHands, forKey: .discardedHands)
+        try container.encode(players, forKey: .players)
+        try container.encode(currentPlayerIdx, forKey: .currentPlayerIdx)
+        try container.encode(firstPlayer, forKey: .firstPlayer)
+        try container.encode(gameEnded, forKey: .gameEnded)
+        try container.encode(isHumanWin, forKey: .isHumanWin)
+        try container.encode(skipRound, forKey: .skipRound)
+        
+    }
 }

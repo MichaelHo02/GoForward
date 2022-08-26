@@ -13,21 +13,13 @@ struct Deck {
         stack.count
     }
     
-    init() {
+    mutating func createDeck() {
         for suit in Suit.allCases {
             for rank in Rank.allCases {
                 stack.append(Card(rank: rank, suit: suit))
             }
         }
     }
-    
-//    mutating func createDeck() {
-//        for suit in Suit.allCases {
-//            for rank in Rank.allCases {
-//                stack.append(Card(rank: rank, suit: suit))
-//            }
-//        }
-//    }
     
     mutating func drawCard() -> Card {
         stack.removeLast()

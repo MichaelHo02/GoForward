@@ -62,6 +62,7 @@ final class GameViewModel: ObservableObject {
     }
     
     func createGame() {
+        deck.createDeck()
         deck.shuffle()
         let startIdx = Int(arc4random()) % players.count
         var j = 0.0
@@ -102,7 +103,9 @@ final class GameViewModel: ObservableObject {
     }
     
     func saveGame() {
-        
+        if let encoded = try? JSONEncoder().encode(gameModel) {
+            UserDefaults.standard.set(encoded, forKey: dataKey)
+        }
     }
     
     func submit() {
@@ -173,6 +176,7 @@ final class GameViewModel: ObservableObject {
             }
             stopTimer()
         }
+        UserDefaults.standard.removeObject(forKey: dataKey)
     }
     
     func saveResult() {
@@ -229,8 +233,17 @@ final class GameViewModel: ObservableObject {
     
     
     init(isNewGame: Bool) {
-        gameModel = GameModel()
         showRegisterModal = isNewGame
         self.isNewGame = isNewGame
+        if !isNewGame {
+            if let data = UserDefaults.standard.data(forKey: dataKey) {
+                if let decoded = try? JSONDecoder().decode(GameModel.self, from: data) {
+                    gameModel = decoded
+                    startGame()
+                    return
+                }
+            }
+        }
+        gameModel = GameModel()
     }
 }
