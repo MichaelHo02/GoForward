@@ -27,7 +27,8 @@ final class GameViewModel: ObservableObject {
     @Published var level = Level.Medium
     
     var isValidUserName: Bool {
-        return true
+        let username =  self.username.trim()
+        return !(username.isEmpty || username.count > 8)
     }
     
     var human: Player {
