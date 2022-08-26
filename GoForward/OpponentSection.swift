@@ -23,7 +23,7 @@ struct OpponentSection: View {
                         Text(bot.name)
                         Spacer()
                     }
-                    .modifier(OpponentSectionModifier(isActive: true))
+                    .modifier(OpponentSectionModifier(isActive: bot.isActive))
                 }
             }
         } else {
@@ -36,7 +36,7 @@ struct OpponentSection: View {
                         HandView(stack: bot.hand, minWidth: 25, maxWidth: 25, spacing: -22, dealingNameSpace: dealingNameSpace) {_ in}
                             .frame(width: 80)
                     }
-                    .modifier(OpponentSectionModifier(isActive: true))
+                    .modifier(OpponentSectionModifier(isActive: bot.isActive))
                 }
             }
         }

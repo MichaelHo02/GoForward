@@ -12,7 +12,7 @@ struct TableSection: View {
     @EnvironmentObject var gameVM: GameViewModel
     
     let dealingNameSpace: Namespace.ID
-
+    
     var maxWidth: CGFloat {
         verticalSizeClass == .compact ? 67 : 100
     }
@@ -32,6 +32,18 @@ struct TableSection: View {
                         .matchedGeometryEffect(id: card.id, in: dealingNameSpace)
                 }
             }
+            let discardedHands = gameVM.discardedHands
+            ForEach(Array(discardedHands.enumerated()), id: \.offset) { idx, discardHand in
+                VStack {
+                    Spacer()
+                    HandView(stack: discardHand.hand, minWidth: 60, maxWidth: maxWidth, spacing: -30, dealingNameSpace: dealingNameSpace) {_ in}
+                        .padding(.horizontal)
+                        .scaleEffect(idx == 1 && discardedHands.count == 2 || discardedHands.count <= 1 ? 1 : 0.8)
+                        .offset(y: idx == 1 && discardedHands.count == 2 || discardedHands.count <= 1 ? 0 : offset)
+                }
+            }
         }
+        .clipShape(RoundedRectangle(cornerRadius: 10))
+        .shadow(radius: 2)
     }
 }

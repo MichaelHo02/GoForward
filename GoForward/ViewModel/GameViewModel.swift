@@ -30,6 +30,10 @@ final class GameViewModel: ObservableObject {
         return true
     }
     
+    var human: Player {
+        gameModel.human
+    }
+    
     var humanHand: Stack {
         gameModel.human.hand
     }
@@ -48,6 +52,10 @@ final class GameViewModel: ObservableObject {
         gameModel.players
     }
     
+    var discardedHands: [DiscardHand] {
+        gameModel.discardedhand
+    }
+    
     func createGame() {
         deck.shuffle()
         let startIdx = Int(arc4random()) % players.count
@@ -63,7 +71,7 @@ final class GameViewModel: ObservableObject {
                 let delay = Double(j / 10.0)
                 j += 1
                 withAnimation(.easeInOut(duration: 0.5).delay(delay)) {
-                    gameModel.updateDeal(playerIdx, card)
+                    gameModel.updateDealCard(playerIdx, card)
                 }
             }
         }
@@ -75,12 +83,17 @@ final class GameViewModel: ObservableObject {
                 gameModel.showHumanHand(i)
             }
         }
+        withAnimation {
+            gameModel.sortHumanHand()
+        }
         hasStartGame = true
         startTimer()
     }
     
     func select(_ card: Card) {
-        
+        withAnimation(.linear(duration: 0.1)) {
+            gameModel.select([card], in: human)
+        }
     }
     
     func saveGame() {
@@ -132,7 +145,18 @@ final class GameViewModel: ObservableObject {
     }
     
     func activatePlayer(_ player: Player) {
+        if !gameModel.allowToPlay(player) { return }
         
+        if !player.isHuman {
+            let hand = gameModel.getComputedHand(of: player)
+            if !hand.isEmpty {
+                print(hand.compactMap({ "\($0.suit) \($0.rank)" }))
+                gameModel.select(hand, in: player)
+            }
+            withAnimation {
+                gameModel.playSelectedHand(of: player)
+            }
+        }
     }
     
     func onAppear() {
@@ -140,7 +164,18 @@ final class GameViewModel: ObservableObject {
         Sound.play(sound: "waiting1", type: "mp3", category: .ambient, numberOfLoops: -1, isBackgroundMusic: true)
     }
     
+    func resetCards() {
+        Sound.play(sound: "cardShove1", type: "wav", category: .playback)
+        gameModel.select(humanHand.filter({ $0.selected }), in: human)
+    }
     
+    func playCards() {
+        Sound.play(sound: "cardSlide1", type: "wav", category: .playback, numberOfLoops: 0)
+        counter = 10
+        withAnimation {
+            gameModel.playSelectedHand(of: human)
+        }
+    }
     
     
     

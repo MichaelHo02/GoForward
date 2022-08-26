@@ -38,7 +38,7 @@ struct GameView: View {
             }
             if gameVM.deck.stack.isEmpty && !gameVM.hasStartGame {
                 Button(action: gameVM.startGame) {
-                    Label("Start Game", systemImage: "start")
+                    Label("Start Game", systemImage: "play")
                 }
                 .buttonStyle(.borderless)
             }

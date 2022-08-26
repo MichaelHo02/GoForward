@@ -40,9 +40,3 @@ struct GameHeader: View {
         .padding(.horizontal)
     }
 }
-
-struct GameHeader_Previews: PreviewProvider {
-    static var previews: some View {
-        GameHeader()
-    }
-}

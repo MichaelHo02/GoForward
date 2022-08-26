@@ -27,9 +27,3 @@ struct ModalSection: View {
         }
     }
 }
-
-struct ModalSection_Previews: PreviewProvider {
-    static var previews: some View {
-        ModalSection()
-    }
-}

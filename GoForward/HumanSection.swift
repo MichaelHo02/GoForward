@@ -23,5 +23,6 @@ struct HumanSection: View {
                 .offset(y: 20)
             BottomBar()
         }
+        .edgesIgnoringSafeArea(.bottom)
     }
 }

@@ -29,8 +29,7 @@ struct ButtonModifier: ViewModifier {
 struct BottomBarModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .padding(.top)
-            .padding(.horizontal)
+            .padding()
             .padding(.bottom, 10)
             .background(.ultraThinMaterial)
     }
