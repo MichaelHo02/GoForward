@@ -8,13 +8,20 @@
 import SwiftUI
 
 struct HumanSection: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
+    @EnvironmentObject var gameVM: GameViewModel
+    let dealingNameSpace: Namespace.ID
+    var spacing: CGFloat {
+        verticalSizeClass == .compact ? -50 : -78
     }
-}
-
-struct HumanSection_Previews: PreviewProvider {
-    static var previews: some View {
-        HumanSection()
+    
+    var body: some View {
+        ZStack(alignment: .bottom) {
+            HandView(stack: gameVM.humanHand, minWidth: 96, maxWidth: 120, spacing: spacing, dealingNameSpace: dealingNameSpace, select: gameVM.select)
+                .padding(.horizontal)
+                .frame(height: 120)
+                .offset(y: 20)
+            BottomBar()
+        }
     }
 }

@@ -10,6 +10,7 @@ import SwiftUI
 struct GameView: View {
     @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
     @Environment(\.scenePhase) var scenePhase
+    @Namespace var dealingNameSpace
 
     @StateObject var gameVM: GameViewModel
     
@@ -22,29 +23,33 @@ struct GameView: View {
             VStack {
                 GameHeader()
                 if verticalSizeClass != .compact {
-                    OpponentSection()
+                    OpponentSection(dealingNameSpace: dealingNameSpace)
                 }
-                Spacer()
                 HStack {
                     if verticalSizeClass == .compact {
-                        OpponentSection()
+                        OpponentSection(dealingNameSpace: dealingNameSpace)
                             .frame(width: 220)
                     }
-                    TableSection()
+                    TableSection(dealingNameSpace: dealingNameSpace)
                 }
                 .padding(.horizontal)
                 .padding(.bottom, verticalSizeClass != .compact ? 20 : 0)
-                HumanSection()
+                HumanSection(dealingNameSpace: dealingNameSpace)
             }
-            
+            if gameVM.deck.stack.isEmpty && !gameVM.hasStartGame {
+                Button(action: gameVM.startGame) {
+                    Label("Start Game", systemImage: "start")
+                }
+                .buttonStyle(.borderless)
+            }
             ModalSection()
         }
         .environmentObject(gameVM)
-    }
-}
-
-struct GameView_Previews: PreviewProvider {
-    static var previews: some View {
-        GameView(isNewGame: true)
+        .edgesIgnoringSafeArea(.bottom)
+        .onAppear(perform: gameVM.onAppear)
+        .onReceive(gameVM.timer) { time in
+            print("Time: \(gameVM.counter)")
+            gameVM.runTimerAction()
+        }
     }
 }

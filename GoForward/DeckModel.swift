@@ -9,6 +9,9 @@ import Foundation
 
 struct Deck {
     private(set) var stack = Stack()
+    var deckCount: Int {
+        stack.count
+    }
     
     init() {
         for suit in Suit.allCases {
@@ -18,15 +21,19 @@ struct Deck {
         }
     }
     
+//    mutating func createDeck() {
+//        for suit in Suit.allCases {
+//            for rank in Rank.allCases {
+//                stack.append(Card(rank: rank, suit: suit))
+//            }
+//        }
+//    }
+    
     mutating func drawCard() -> Card {
         stack.removeLast()
     }
     
     mutating func shuffle() {
         stack.shuffle()
-    }
-    
-    func cardsRemaining() -> Int {
-        stack.count
     }
 }

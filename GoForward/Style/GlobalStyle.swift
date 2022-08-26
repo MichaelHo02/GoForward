@@ -59,3 +59,14 @@ struct ModalModifier: ViewModifier {
             .shadow(radius: 2)
     }
 }
+
+struct OpponentSectionModifier: ViewModifier {
+    let isActive: Bool
+    
+    func body(content: Content) -> some View {
+        content
+            .padding(4)
+            .background(isActive ? Color("Color6").opacity(0.8) : nil)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+    }
+}

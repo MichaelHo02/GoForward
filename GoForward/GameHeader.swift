@@ -20,14 +20,14 @@ struct GameHeader: View {
             }
             Spacer()
             
-            Text("My Score: \(gameVM.scores[3])")
+            Text("My Score: \(gameVM.humanScores)")
                 .font(.callout)
                 .padding()
                 .fixedSize()
             
             Menu {
-                ForEach(gameVM.scores, id: \.self) { score in
-                    Label("Apple: \(gameVM.scores[0])", systemImage: "person")
+                ForEach(gameVM.bots, id: \.id) { bot in
+                    Label("\(bot.name): \(bot.score)", systemImage: "person")
                 }
             } label: {
                 Label("Scores", systemImage: "chart.bar.xaxis")
