@@ -51,5 +51,8 @@ struct GameView: View {
             print("Time: \(gameVM.counter)")
             gameVM.runTimerAction()
         }
+        .onChange(of: scenePhase) { newPhase in
+            gameVM.updateBaseOnPhase(newPhase)
+        }
     }
 }

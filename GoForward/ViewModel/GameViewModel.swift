@@ -56,6 +56,10 @@ final class GameViewModel: ObservableObject {
         gameModel.discardedhand
     }
     
+    var isHumanWin: Bool {
+        gameModel.isHumanWin
+    }
+    
     func createGame() {
         deck.shuffle()
         let startIdx = Int(arc4random()) % players.count
@@ -156,6 +160,13 @@ final class GameViewModel: ObservableObject {
             withAnimation {
                 gameModel.playSelectedHand(of: player)
             }
+            
+            if gameModel.gameEnded {
+                withAnimation(.easeInOut(duration: 0.5)) {
+                    showGameOverModal = true
+                }
+                stopTimer()
+            }
         }
     }
     
@@ -177,6 +188,28 @@ final class GameViewModel: ObservableObject {
         }
     }
     
+    func resumeGame() {
+        withAnimation(.easeInOut(duration: 0.5)) {
+            withAnimation {
+                showPauseModal = false
+            }
+        }
+        Sound.stopBGMusic()
+        Sound.play(sound: "waiting1", type: "mp3", category: .ambient, numberOfLoops: -1, isBackgroundMusic: true)
+    }
+    
+    func updateBaseOnPhase(_ newPhase: ScenePhase) {
+        if newPhase == .background || newPhase == .inactive {
+            Sound.stopBGMusic()
+            stopTimer()
+            showPauseModal = true
+        }
+        
+        if newPhase == .background {
+            print("Save game")
+            saveGame()
+        }
+    }
     
     
     init(isNewGame: Bool) {

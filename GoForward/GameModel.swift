@@ -14,7 +14,7 @@ struct GameModel {
     var currentPlayerIdx = 0
     private var firstPlayer = true
     private(set) var gameEnded = false
-    private var isHumanWin = false
+    var isHumanWin = false
     var skipRound: [Bool]
     
     var endRound: Bool {
@@ -277,10 +277,6 @@ struct GameModel {
         }
         
         deptFirstSearchHand(0)
-        //        print(result.count)
-        //        result.forEach { hand in
-        //            print(hand.compactMap({ "\($0.suit) \($0.rank)" }))
-        //        }
         return result
     }
     
