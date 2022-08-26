@@ -160,14 +160,29 @@ final class GameViewModel: ObservableObject {
             withAnimation {
                 gameModel.playSelectedHand(of: player)
             }
-            
-            if gameModel.gameEnded {
-                withAnimation(.easeInOut(duration: 0.5)) {
-                    showGameOverModal = true
-                }
-                stopTimer()
-            }
+            handleWinGame()
         }
+    }
+    
+    func handleWinGame() {
+        if gameModel.gameEnded {
+            saveResult()
+            withAnimation(.easeInOut(duration: 0.5)) {
+                showGameOverModal = true
+            }
+            stopTimer()
+        }
+    }
+    
+    func saveResult() {
+        let context = DataController.shared.viewContext
+        let user = User(context: context)
+        let human = self.human
+        user.id = UUID()
+        user.name = human.name
+        user.score = Int16(human.score)
+        user.isWin = isHumanWin
+        DataController.shared.save()
     }
     
     func onAppear() {

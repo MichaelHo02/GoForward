@@ -18,6 +18,7 @@ final class DataController {
     
     func getAllUsers() -> [User] {
         let request: NSFetchRequest<User> = User.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: "score", ascending: false)]
         do {
             return try viewContext.fetch(request)
         } catch {
