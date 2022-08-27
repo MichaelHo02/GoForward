@@ -58,7 +58,6 @@
 		C1E65B8F28B7DD6E00BFDD46 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E65B8E28B7DD6E00BFDD46 /* CardView.swift */; };
 		C1E65B9128B7DFF900BFDD46 /* BottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E65B9028B7DFF900BFDD46 /* BottomBar.swift */; };
 		C1E65B9328B85DCA00BFDD46 /* CustomProgressViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E65B9228B85DCA00BFDD46 /* CustomProgressViewStyle.swift */; };
-		C1E65B9728B89CAF00BFDD46 /* DeckViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E65B9628B89CAF00BFDD46 /* DeckViewModel.swift */; };
 		C1E65B9928B8AAEA00BFDD46 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E65B9828B8AAEA00BFDD46 /* GameViewModel.swift */; };
 		C1E65B9D28B8B18D00BFDD46 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E65B9C28B8B18D00BFDD46 /* GameModel.swift */; };
 /* End PBXBuildFile section */
@@ -116,7 +115,6 @@
 		C1E65B8E28B7DD6E00BFDD46 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		C1E65B9028B7DFF900BFDD46 /* BottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBar.swift; sourceTree = "<group>"; };
 		C1E65B9228B85DCA00BFDD46 /* CustomProgressViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressViewStyle.swift; sourceTree = "<group>"; };
-		C1E65B9628B89CAF00BFDD46 /* DeckViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckViewModel.swift; sourceTree = "<group>"; };
 		C1E65B9828B8AAEA00BFDD46 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		C1E65B9C28B8B18D00BFDD46 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -138,7 +136,6 @@
 				C1E65B5C28B7A70C00BFDD46 /* PageViewModel.swift */,
 				C1E65B6828B7B3A100BFDD46 /* LeaderboardViewModel.swift */,
 				C1E65B7528B7B90300BFDD46 /* HowToPlayViewModel.swift */,
-				C1E65B9628B89CAF00BFDD46 /* DeckViewModel.swift */,
 				C1E65B9828B8AAEA00BFDD46 /* GameViewModel.swift */,
 			);
 			name = ViewModel;
@@ -409,7 +406,6 @@
 				C1E65B5F28B7A80800BFDD46 /* GlobalStyle.swift in Sources */,
 				C1E65B4028B7A2FE00BFDD46 /* DeckModel.swift in Sources */,
 				C1E65B7228B7B6FA00BFDD46 /* LeaderboardRow.swift in Sources */,
-				C1E65B9728B89CAF00BFDD46 /* DeckViewModel.swift in Sources */,
 				C1E65B7428B7B7EF00BFDD46 /* Avatar.swift in Sources */,
 				C1E65B8F28B7DD6E00BFDD46 /* CardView.swift in Sources */,
 				C1E65B5928B7A69900BFDD46 /* LeaderboardView.swift in Sources */,

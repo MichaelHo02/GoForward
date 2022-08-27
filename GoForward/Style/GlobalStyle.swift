@@ -1,13 +1,20 @@
-//
-//  GlobalStyle.swift
-//  GoForward
-//
-//  Created by Ho Le Minh Thach on 25/08/2022.
-//
+/*
+ RMIT University Vietnam
+ Course: COSC2659 iOS Development
+ Semester: 2022B
+ Assessment: Assignment 2
+ Author: Ho Le Minh Thach
+ ID: s3877980
+ Created  date: 27/08/2022
+ Last modified: 27/08/2022
+ Learning from Hacking with Swift to implement MVVM, and the usage of CoreData
+ Hudson, P. (n.d.). The 100 days of Swiftui. Hacking with Swift. Retrieved July 30, 2022, from https://www.hackingwithswift.com/100/swiftui
+*/
 
 import Foundation
 import SwiftUI
 
+/// Styling for view transition
 struct ViewTransition: ViewModifier {
     let edge: Edge
     
@@ -17,6 +24,7 @@ struct ViewTransition: ViewModifier {
     }
 }
 
+/// Styling for button in menu page
 struct ButtonModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -26,6 +34,7 @@ struct ButtonModifier: ViewModifier {
     }
 }
 
+/// Styling for the bottom bar in game view
 struct BottomBarModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -35,6 +44,7 @@ struct BottomBarModifier: ViewModifier {
     }
 }
 
+/// Styling for title in modal
 struct ModalTitleModifier: ViewModifier {
     let font = Font.title.bold()
     let minWidth: CGFloat
@@ -50,6 +60,7 @@ struct ModalTitleModifier: ViewModifier {
     }
 }
 
+/// Styling for modal
 struct ModalModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -59,6 +70,7 @@ struct ModalModifier: ViewModifier {
     }
 }
 
+/// Styling for opponent section view
 struct OpponentSectionModifier: ViewModifier {
     let isActive: Bool
     
