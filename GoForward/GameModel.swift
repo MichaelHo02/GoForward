@@ -68,12 +68,10 @@ struct GameModel: Codable {
             }
         }
         players[self.currentPlayerIdx].isActive = true
-
         if let lastDiscardedHand = discardedHands.last {
             if lastDiscardedHand.handOwner == players[self.currentPlayerIdx] {
                 discardedHands.removeAll()
                 skipRound = Array(repeating: false, count: players.count)
-//                endRound = true
             }
         }
         
@@ -114,7 +112,8 @@ struct GameModel: Codable {
                 skipRound[idx] = true
             } else if playHand.isEmpty && endRound && !players[idx].hand.isEmpty {
                 print("Hello")
-                players[idx].hand[0].selected.toggle()
+                print(playHand)
+                players[idx].hand[0].selected = true
                 playHand = [players[idx].hand[0]]
             }
             playHand.sort(by: <)
@@ -341,6 +340,7 @@ struct GameModel: Codable {
         case gameEnded
         case isHumanWin
         case skipRound
+        case firstRound
     }
     
     init(from decoder: Decoder) throws {
@@ -352,6 +352,7 @@ struct GameModel: Codable {
         self.gameEnded = try container.decode(Bool.self, forKey: .gameEnded)
         self.isHumanWin = try container.decode(Bool.self, forKey: .isHumanWin)
         self.skipRound = try container.decode([Bool].self, forKey: .skipRound)
+        self.firstRound = try container.decode(Bool.self, forKey: .firstRound)
     }
     
     func encode(to encoder: Encoder) throws {
@@ -363,6 +364,6 @@ struct GameModel: Codable {
         try container.encode(gameEnded, forKey: .gameEnded)
         try container.encode(isHumanWin, forKey: .isHumanWin)
         try container.encode(skipRound, forKey: .skipRound)
-        
+        try container.encode(firstRound, forKey: .firstRound)
     }
 }
