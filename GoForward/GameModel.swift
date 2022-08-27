@@ -52,15 +52,20 @@ struct GameModel: Codable {
         players[players.count - 1].hand.sort(by: <)
     }
     
+    func getCurrentPlayer() -> Player {
+        players[self.currentPlayerIdx]
+    }
+    
     mutating func getNextPlayer() -> Player {
         if firstPlayer {
             firstPlayer = false
         } else {
-            self.players[currentPlayerIdx].isActive = false
+
+        }
+        self.players[currentPlayerIdx].isActive = false
+        self.currentPlayerIdx = (self.currentPlayerIdx + 1) % self.players.count
+        while skipRound[currentPlayerIdx] {
             self.currentPlayerIdx = (self.currentPlayerIdx + 1) % self.players.count
-            while skipRound[currentPlayerIdx] {
-                self.currentPlayerIdx = (self.currentPlayerIdx + 1) % self.players.count
-            }
         }
         players[self.currentPlayerIdx].isActive = true
         

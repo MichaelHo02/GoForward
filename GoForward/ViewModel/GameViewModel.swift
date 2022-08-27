@@ -20,7 +20,7 @@ final class GameViewModel: ObservableObject {
     private var isNewGame: Bool
     
     enum Level: String, CaseIterable {
-        case Easy, Medium, Hard
+        case Medium, Hard
     }
     
     @Published var username = ""
@@ -97,7 +97,9 @@ final class GameViewModel: ObservableObject {
     }
     
     func select(_ card: Card) {
+        if !hasStartGame { return }
         withAnimation(.linear(duration: 0.1)) {
+            Sound.play(sound: "cardShove1", type: "wav", category: .playback)
             gameModel.select([card], in: human)
         }
     }
@@ -135,17 +137,19 @@ final class GameViewModel: ObservableObject {
                 self.isNewGame.toggle()
                 return
             }
+            let player1 = gameModel.getCurrentPlayer()
+            activatePlayer(player1)
+            print("This is current player", player1.name)
             
             let player = gameModel.getNextPlayer()
-            print(player.name)
-            activatePlayer(player)
+            print("This is next player: ", player.name)
             if player.isHuman {
-                print("Is activated: ", player.isActive)
                 counter = 0
                 Sound.play(sound: "go", type: "wav", category: .playback)
             } else {
                 counter = 8
             }
+            return
         } else if counter == 5 {
             Sound.play(sound: "hurry_up", type: "wav", category: .playback)
         }
@@ -160,6 +164,9 @@ final class GameViewModel: ObservableObject {
             if !hand.isEmpty {
                 print(hand.compactMap({ "\($0.suit) \($0.rank)" }))
                 gameModel.select(hand, in: player)
+                Sound.play(sound: "cardShove1", type: "wav", category: .playback)
+            } else {
+                Sound.play(sound: "cardSlide1", type: "wav", category: .playback)
             }
             withAnimation {
                 gameModel.playSelectedHand(of: player)
@@ -201,7 +208,7 @@ final class GameViewModel: ObservableObject {
     }
     
     func playCards() {
-        Sound.play(sound: "cardSlide1", type: "wav", category: .playback, numberOfLoops: 0)
+        Sound.play(sound: "cardSlide1", type: "wav", category: .playback)
         counter = 10
         withAnimation {
             gameModel.playSelectedHand(of: human)
