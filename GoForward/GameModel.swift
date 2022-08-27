@@ -143,10 +143,10 @@ struct GameModel: Codable {
                 isPlayable = true
             }
             
-            if player.id == lastDiscardHand.handOwner.id {
-                print("This is where he start again")
-                isPlayable = true
-            }
+//            if player.id == lastDiscardHand.handOwner.id {
+//                print("This is where he start again")
+//                isPlayable = true
+//            }
             
             if lastDiscardHand.hand.contains(where: { $0.rank == .Two }) {
                 if discardHandType == .Single &&
@@ -162,13 +162,12 @@ struct GameModel: Codable {
                 isPlayable = true
             }
         } else {
-            print("This hand has 3 bitch", hand.contains(where: { $0.rank == Rank.Three && $0.suit == Suit.Spade }))
-            if hand.contains(where: { $0.rank == Rank.Three && $0.suit == Suit.Spade }) && firstRound {
+            if hand.contains(where: { $0.rank == Rank.Three && $0.suit == Suit.Spade }) && firstRound && HandType(hand) != .None {
                 isPlayable = true
                 firstRound = false
             }
             
-            if endRound && !firstRound {
+            if endRound && !firstRound && HandType(hand) != .None {
                 isPlayable = true
             }
         }

@@ -188,6 +188,7 @@ final class GameViewModel: ObservableObject {
             withAnimation(.easeInOut(duration: 0.5)) {
                 showGameOverModal = true
             }
+            print("Game Ended")
             stopTimer()
         }
         UserDefaults.standard.removeObject(forKey: dataKey)
