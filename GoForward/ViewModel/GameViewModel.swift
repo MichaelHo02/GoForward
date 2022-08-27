@@ -18,6 +18,7 @@ final class GameViewModel: ObservableObject {
     @Published var counter: Double = 10
     @Published var hasStartGame = false
     private var isNewGame: Bool
+    private var isFirstPlayer = true
     
     enum Level: String, CaseIterable {
         case Medium, Hard
@@ -72,6 +73,8 @@ final class GameViewModel: ObservableObject {
                 let card = deck.drawCard()
                 
                 if (card.rank == .Three && card.suit == .Spade) {
+                    print(card.rank, card.suit)
+                    print("This is the start player", playerIdx)
                     gameModel.currentPlayerIdx = playerIdx
                 }
                 let delay = Double(j / 10.0)
@@ -105,6 +108,7 @@ final class GameViewModel: ObservableObject {
     }
     
     func saveGame() {
+        if !hasStartGame { return }
         if let encoded = try? JSONEncoder().encode(gameModel) {
             UserDefaults.standard.set(encoded, forKey: dataKey)
         }
@@ -137,13 +141,17 @@ final class GameViewModel: ObservableObject {
                 self.isNewGame.toggle()
                 return
             }
-            let player1 = gameModel.getCurrentPlayer()
-            activatePlayer(player1)
-            print("This is current player", player1.name)
+            if !isFirstPlayer {
+                let player = gameModel.getCurrentPlayer()
+                activatePlayer(player)
+                handleWinGame()
+            } else {
+                isFirstPlayer = false
+            }
             
-            let player = gameModel.getNextPlayer()
-            print("This is next player: ", player.name)
-            if player.isHuman {
+            let playerCur = gameModel.getNextPlayer()
+            print("This is current player", playerCur.name)
+            if playerCur.isHuman {
                 counter = 0
                 Sound.play(sound: "go", type: "wav", category: .playback)
             } else {
@@ -171,7 +179,6 @@ final class GameViewModel: ObservableObject {
             withAnimation {
                 gameModel.playSelectedHand(of: player)
             }
-            handleWinGame()
         }
     }
     

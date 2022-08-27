@@ -16,9 +16,9 @@ struct GameModel: Codable {
     private(set) var gameEnded = false
     var isHumanWin = false
     var skipRound: [Bool]
-    
+    var firstRound = true
     var endRound: Bool {
-        discardedHands.isEmpty
+        discardedhand.isEmpty
     }
     
     var bots: [Player] {
@@ -52,27 +52,28 @@ struct GameModel: Codable {
         players[players.count - 1].hand.sort(by: <)
     }
     
-    func getCurrentPlayer() -> Player {
-        players[self.currentPlayerIdx]
+    mutating func getCurrentPlayer() -> Player {
+        self.players[currentPlayerIdx].isActive = true
+        return players[self.currentPlayerIdx]
     }
     
     mutating func getNextPlayer() -> Player {
         if firstPlayer {
             firstPlayer = false
         } else {
-
-        }
-        self.players[currentPlayerIdx].isActive = false
-        self.currentPlayerIdx = (self.currentPlayerIdx + 1) % self.players.count
-        while skipRound[currentPlayerIdx] {
+            self.players[currentPlayerIdx].isActive = false
             self.currentPlayerIdx = (self.currentPlayerIdx + 1) % self.players.count
+            while skipRound[currentPlayerIdx] {
+                self.currentPlayerIdx = (self.currentPlayerIdx + 1) % self.players.count
+            }
         }
         players[self.currentPlayerIdx].isActive = true
-        
+
         if let lastDiscardedHand = discardedHands.last {
             if lastDiscardedHand.handOwner == players[self.currentPlayerIdx] {
                 discardedHands.removeAll()
                 skipRound = Array(repeating: false, count: players.count)
+//                endRound = true
             }
         }
         
@@ -99,8 +100,12 @@ struct GameModel: Codable {
     mutating func playSelectedHand(of player: Player) {
         if let idx = players.firstIndex(where: { $0 == player}) {
             var playHand = players[idx].hand.filter { $0.selected == true }
-            if playHand.isEmpty {
+            if playHand.isEmpty && !endRound {
                 skipRound[idx] = true
+            } else if playHand.isEmpty && endRound && !players[idx].hand.isEmpty {
+                print("Hello")
+                players[idx].hand[0].selected.toggle()
+                playHand = [players[idx].hand[0]]
             }
             playHand.sort(by: <)
             if !isPlayable(playHand, of: player) {
@@ -124,7 +129,7 @@ struct GameModel: Codable {
         }
     }
     
-    func isPlayable(_ hand: Stack, of player: Player) -> Bool {
+    mutating func isPlayable(_ hand: Stack, of player: Player) -> Bool {
         var isPlayable = false
         if let lastDiscardHand = discardedHands.last {
             let handType = HandType(hand)
@@ -157,11 +162,13 @@ struct GameModel: Codable {
                 isPlayable = true
             }
         } else {
-            if hand.contains(where: { $0.rank == Rank.Three && $0.suit == Suit.Spade }) {
+            print("This hand has 3 bitch", hand.contains(where: { $0.rank == Rank.Three && $0.suit == Suit.Spade }))
+            if hand.contains(where: { $0.rank == Rank.Three && $0.suit == Suit.Spade }) && firstRound {
                 isPlayable = true
+                firstRound = false
             }
             
-            if endRound {
+            if endRound && !firstRound {
                 isPlayable = true
             }
         }

@@ -65,7 +65,8 @@ struct OpponentSectionModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .padding(4)
-            .background(isActive ? Color("Color6").opacity(0.8) : nil)
+            .background(isActive ? Color("Color6").opacity(0.6) : nil)
             .clipShape(RoundedRectangle(cornerRadius: 10))
+            .shadow(radius: isActive ? 2 : 0)
     }
 }

@@ -40,7 +40,7 @@ struct GameView: View {
                 Button(action: gameVM.startGame) {
                     Label("Start Game", systemImage: "play")
                 }
-                .buttonStyle(.borderless)
+                .buttonStyle(.borderedProminent)
             }
             ModalSection()
         }

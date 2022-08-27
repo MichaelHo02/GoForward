@@ -36,6 +36,10 @@ struct RegisterModal: View {
                 .frame(maxWidth: 280)
                 .pickerStyle(.segmented)
                 
+                Text("Player \(gameVM.level == GameViewModel.Level.Medium ? "allows" : "doesn't allow") to win by ending with big two")
+                    .font(.caption)
+                    .padding(0)
+                
                 HStack {
                     Button(action: pageVM.visitMenu) {
                         Label("Cancel", systemImage: "chevron.backward")
