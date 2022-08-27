@@ -141,6 +141,15 @@
 			name = ViewModel;
 			sourceTree = "<group>";
 		};
+		C16D1B4E28BA29DB00EC285C /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				C1E65B5E28B7A80800BFDD46 /* GlobalStyle.swift */,
+				C1E65B9228B85DCA00BFDD46 /* CustomProgressViewStyle.swift */,
+			);
+			path = Style;
+			sourceTree = "<group>";
+		};
 		C1E65AFA28B7A01500BFDD46 = {
 			isa = PBXGroup;
 			children = (
@@ -160,9 +169,9 @@
 		C1E65B0528B7A01500BFDD46 /* GoForward */ = {
 			isa = PBXGroup;
 			children = (
+				C16D1B4E28BA29DB00EC285C /* Style */,
 				C16D1B4B28B9E64000EC285C /* ViewModel */,
 				C1E65B1A28B7A14100BFDD46 /* Sound */,
-				C1E65B1928B7A12B00BFDD46 /* Style */,
 				C1E65B1828B7A12300BFDD46 /* Util */,
 				C1E65B1628B7A11000BFDD46 /* Model */,
 				C1E65B1428B7A10100BFDD46 /* View */,
@@ -213,15 +222,6 @@
 				C1E65B6428B7AEAD00BFDD46 /* Sound.swift */,
 			);
 			name = Util;
-			sourceTree = "<group>";
-		};
-		C1E65B1928B7A12B00BFDD46 /* Style */ = {
-			isa = PBXGroup;
-			children = (
-				C1E65B5E28B7A80800BFDD46 /* GlobalStyle.swift */,
-				C1E65B9228B85DCA00BFDD46 /* CustomProgressViewStyle.swift */,
-			);
-			path = Style;
 			sourceTree = "<group>";
 		};
 		C1E65B1A28B7A14100BFDD46 /* Sound */ = {
