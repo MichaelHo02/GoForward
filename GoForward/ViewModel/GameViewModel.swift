@@ -20,12 +20,7 @@ final class GameViewModel: ObservableObject {
     private var isNewGame: Bool
     private var isFirstPlayer = true
     
-    enum Level: String, CaseIterable {
-        case Medium, Hard
-    }
-    
     @Published var username = ""
-    @Published var level = Level.Medium
     
     var isValidUserName: Bool {
         let username =  self.username.trim()
@@ -96,6 +91,8 @@ final class GameViewModel: ObservableObject {
             gameModel.sortHumanHand()
         }
         hasStartGame = true
+        gameModel.checkPreWinning()
+        handleWinGame()
         startTimer()
     }
     
@@ -103,7 +100,11 @@ final class GameViewModel: ObservableObject {
         if !hasStartGame { return }
         withAnimation(.linear(duration: 0.1)) {
             Sound.play(sound: "cardShove1", type: "wav", category: .playback)
-            gameModel.select([card], in: human)
+            if card.selected {
+                gameModel.deSelect([card], in: human)
+            } else {
+                gameModel.select([card], in: human)
+            }
         }
     }
     
@@ -179,6 +180,16 @@ final class GameViewModel: ObservableObject {
             withAnimation {
                 gameModel.playSelectedHand(of: player)
             }
+        } else {
+            print("This is shit")
+            let card = player.hand.filter({ $0.rank == .Three && $0.suit == .Spade })
+            if !card.isEmpty {
+                withAnimation {
+                    gameModel.deSelect(humanHand, in: player)
+                    gameModel.select(card, in: player)
+                    gameModel.playSelectedHand(of: player)
+                }
+            }
         }
     }
     
@@ -212,7 +223,7 @@ final class GameViewModel: ObservableObject {
     
     func resetCards() {
         Sound.play(sound: "cardShove1", type: "wav", category: .playback)
-        gameModel.select(humanHand.filter({ $0.selected }), in: human)
+        gameModel.deSelect(humanHand.filter({ $0.selected }), in: human)
     }
     
     func playCards() {
@@ -231,9 +242,11 @@ final class GameViewModel: ObservableObject {
         }
         Sound.stopBGMusic()
         Sound.play(sound: "waiting1", type: "mp3", category: .ambient, numberOfLoops: -1, isBackgroundMusic: true)
+        startTimer()
     }
     
     func updateBaseOnPhase(_ newPhase: ScenePhase) {
+        if !hasStartGame { return }
         if newPhase == .background || newPhase == .inactive {
             Sound.stopBGMusic()
             stopTimer()
@@ -254,6 +267,7 @@ final class GameViewModel: ObservableObject {
             if let data = UserDefaults.standard.data(forKey: dataKey) {
                 if let decoded = try? JSONDecoder().decode(GameModel.self, from: data) {
                     gameModel = decoded
+                    isFirstPlayer = false
                     startGame()
                     return
                 }

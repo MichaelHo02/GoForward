@@ -91,7 +91,17 @@ struct GameModel: Codable {
         if let playerIdx = self.players.firstIndex(where:  {$0 == player }) {
             stack.forEach { card in
                 if let cardIdx = self.players[playerIdx].hand.firstIndex(where: { $0 == card }) {
-                    self.players[playerIdx].hand[cardIdx].selected.toggle()
+                    self.players[playerIdx].hand[cardIdx].selected = true
+                }
+            }
+        }
+    }
+    
+    mutating func deSelect(_ stack: Stack, in player: Player) {
+        if let playerIdx = self.players.firstIndex(where:  {$0 == player }) {
+            stack.forEach { card in
+                if let cardIdx = self.players[playerIdx].hand.firstIndex(where: { $0 == card }) {
+                    self.players[playerIdx].hand[cardIdx].selected = false
                 }
             }
         }
@@ -109,7 +119,7 @@ struct GameModel: Codable {
             }
             playHand.sort(by: <)
             if !isPlayable(playHand, of: player) {
-                select(playHand, in: player)
+                deSelect(playHand, in: player)
                 return
             }
             
@@ -121,7 +131,7 @@ struct GameModel: Codable {
             discardedHands.append(DiscardHand(hand: playHand, handOwner: player))
             players[idx].hand = players[idx].hand.filter { $0.selected == false }
             
-            if isWin(player) {
+            if isWin(player.hand, idx) {
                 gameEnded = true
                 isHumanWin = player.isHuman
                 calculateScoreAfterWinning()
@@ -174,42 +184,50 @@ struct GameModel: Codable {
         
         return isPlayable
     }
+    
+    mutating func checkPreWinning() {
+        for i in 0 ..< players.count {
+            let hand = players[i].hand.sorted(by: <)
+            if isWin(hand, i) {
+                gameEnded = true
+                isHumanWin = players[i].isHuman
+                calculateScoreAfterWinning()
+            }
+        }
+    }
 
-    mutating func isWin(_ player: Player) -> Bool {
+    mutating func isWin(_ hand: Stack, _ idx: Int) -> Bool {
         var result = false
-        if let idx = players.firstIndex(where: { $0 == player }) {
-            let hand = players[idx].hand
+        
+        if hand.isEmpty {
+            result = true
+            players[idx].score += 500
+        }
+        
+        if hand.count == 13 {
+            var tmp = hand.filter({ $0.rank == .Three})
+            if HandType(tmp) == .FourOfAKind {
+                result = true
+                players[idx].score += handScore(tmp) * HandType.FourOfAKind.rawValue * 5
+            }
             
-            if hand.isEmpty {
+            tmp = hand.filter({ $0.rank == .Two })
+            if HandType(tmp) == .FourOfAKind {
+                result = true
+                players[idx].score += handScore(tmp) * HandType.FourOfAKind.rawValue * 10
+            }
+            
+            if hand.reduce(0, {$1.suit == .Heart || $1.suit == .Diamond ? 1 : 0}) == 12 {
+                result = true
+                players[idx].score += 500
+            } else if hand.reduce(0, {$1.suit == .Club || $1.suit == .Spade ? 1 : 0}) == 12 {
                 result = true
                 players[idx].score += 500
             }
             
-            if hand.count == 13 {
-                var tmp = hand.filter({ $0.rank == .Three})
-                if HandType(tmp) == .FourOfAKind {
-                    result = true
-                    players[idx].score += handScore(tmp) * HandType.FourOfAKind.rawValue * 5
-                }
-                
-                tmp = hand.filter({ $0.rank == .Two })
-                if HandType(tmp) == .FourOfAKind {
-                    result = true
-                    players[idx].score += handScore(tmp) * HandType.FourOfAKind.rawValue * 10
-                }
-                
-                if hand.reduce(0, {$1.suit == .Heart || $1.suit == .Diamond ? 1 : 0}) == 12 {
-                    result = true
-                    players[idx].score += 500
-                } else if hand.reduce(0, {$1.suit == .Club || $1.suit == .Spade ? 1 : 0}) == 12 {
-                    result = true
-                    players[idx].score += 500
-                }
-                
-                if hand.isDragonStraight() {
-                    result = true
-                    players[idx].score += HandType.Straight.rawValue * 100
-                }
+            if hand.isDragonStraight() {
+                result = true
+                players[idx].score += HandType.Straight.rawValue * 100
             }
         }
         return result

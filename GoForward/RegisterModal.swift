@@ -28,18 +28,6 @@ struct RegisterModal: View {
                     .textFieldStyle(.roundedBorder)
                     .frame(maxWidth: 280)
                 
-                Picker("Levels", selection: $gameVM.level) {
-                    ForEach(GameViewModel.Level.allCases, id: \.self) { level in
-                        Text(level.rawValue)
-                    }
-                }
-                .frame(maxWidth: 280)
-                .pickerStyle(.segmented)
-                
-                Text("Player \(gameVM.level == GameViewModel.Level.Medium ? "allows" : "doesn't allow") to win by ending with big two")
-                    .font(.caption)
-                    .padding(0)
-                
                 HStack {
                     Button(action: pageVM.visitMenu) {
                         Label("Cancel", systemImage: "chevron.backward")
