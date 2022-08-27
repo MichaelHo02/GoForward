@@ -16,9 +16,3 @@ struct CardView: View {
             .aspectRatio(2/3, contentMode: .fit)
     }
 }
-
-struct CardView_Previews: PreviewProvider {
-    static var previews: some View {
-        CardView(cardName: "\(Suit.Club)\(Rank.A)")
-    }
-}

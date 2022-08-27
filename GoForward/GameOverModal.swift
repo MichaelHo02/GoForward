@@ -51,9 +51,3 @@ struct GameOverModal: View {
         }
     }
 }
-
-struct GameOverModal_Previews: PreviewProvider {
-    static var previews: some View {
-        GameOverModal()
-    }
-}

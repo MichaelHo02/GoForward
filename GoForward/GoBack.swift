@@ -16,9 +16,3 @@ struct GoBack: View {
         }
     }
 }
-
-struct GoBack_Previews: PreviewProvider {
-    static var previews: some View {
-        GoBack(action: {})
-    }
-}

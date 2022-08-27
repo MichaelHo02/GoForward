@@ -51,9 +51,3 @@ struct RegisterModal: View {
         .zIndex(1)
     }
 }
-
-struct RegisterModal_Previews: PreviewProvider {
-    static var previews: some View {
-        RegisterModal()
-    }
-}

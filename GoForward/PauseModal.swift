@@ -43,9 +43,3 @@ struct PauseModal: View {
         }
     }
 }
-
-struct PauseModal_Previews: PreviewProvider {
-    static var previews: some View {
-        PauseModal()
-    }
-}

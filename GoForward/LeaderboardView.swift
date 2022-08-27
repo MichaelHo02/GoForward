@@ -15,7 +15,7 @@ struct LeaderboardView: View {
         ZStack {
             VStack {
                 List {
-                    Spacer()
+                    Spacer(minLength: 0)
                     ForEach(leaderboardVM.users) { user in
                         LeaderboardRow(user: user)
                     }
@@ -32,11 +32,5 @@ struct LeaderboardView: View {
             leaderboardVM.playBGMusic()
             leaderboardVM.getAllUsers()
         }
-    }
-}
-
-struct LeaderboardView_Previews: PreviewProvider {
-    static var previews: some View {
-        LeaderboardView()
     }
 }

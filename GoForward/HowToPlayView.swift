@@ -67,9 +67,3 @@ struct HowToPlayView: View {
         }
     }
 }
-
-struct HowToPlayView_Previews: PreviewProvider {
-    static var previews: some View {
-        HowToPlayView()
-    }
-}

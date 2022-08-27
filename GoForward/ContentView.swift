@@ -33,9 +33,3 @@ struct ContentView: View {
         .environmentObject(pageVM)
     }
 }
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}

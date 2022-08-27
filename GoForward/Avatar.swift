@@ -19,9 +19,3 @@ struct Avatar: View {
             .frame(width: 50)
     }
 }
-
-struct Avatar_Previews: PreviewProvider {
-    static var previews: some View {
-        Avatar(image: Image("user0"))
-    }
-}

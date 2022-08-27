@@ -62,6 +62,7 @@ final class GameViewModel: ObservableObject {
         deck.shuffle()
         let startIdx = Int(arc4random()) % players.count
         var j = 0.0
+        Sound.play(sound: "cardShuffle", type: "wav", category: .playback, numberOfLoops: 1)
         while deck.deckCount > 0 {
             for i in startIdx ..< startIdx + players.count {
                 let playerIdx = i % players.count

@@ -24,9 +24,3 @@ struct Header: View {
         .background(.bar)
     }
 }
-
-struct Header_Previews: PreviewProvider {
-    static var previews: some View {
-        Header(title: "Title")
-    }
-}
