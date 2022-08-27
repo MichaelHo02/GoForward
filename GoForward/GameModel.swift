@@ -131,7 +131,7 @@ struct GameModel: Codable {
             discardedHands.append(DiscardHand(hand: playHand, handOwner: player))
             players[idx].hand = players[idx].hand.filter { $0.selected == false }
             
-            if isWin(player.hand, idx) {
+            if isWin(players[idx].hand, idx) {
                 gameEnded = true
                 isHumanWin = player.isHuman
                 calculateScoreAfterWinning()
@@ -200,6 +200,7 @@ struct GameModel: Codable {
         var result = false
         
         if hand.isEmpty {
+            print("Is Win")
             result = true
             players[idx].score += 500
         }
