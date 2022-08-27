@@ -141,13 +141,13 @@
 			name = ViewModel;
 			sourceTree = "<group>";
 		};
-		C16D1B4E28BA29DB00EC285C /* Style */ = {
+		C16D1B4F28BA2A0500EC285C /* Style */ = {
 			isa = PBXGroup;
 			children = (
 				C1E65B5E28B7A80800BFDD46 /* GlobalStyle.swift */,
 				C1E65B9228B85DCA00BFDD46 /* CustomProgressViewStyle.swift */,
 			);
-			path = Style;
+			name = Style;
 			sourceTree = "<group>";
 		};
 		C1E65AFA28B7A01500BFDD46 = {
@@ -169,7 +169,7 @@
 		C1E65B0528B7A01500BFDD46 /* GoForward */ = {
 			isa = PBXGroup;
 			children = (
-				C16D1B4E28BA29DB00EC285C /* Style */,
+				C16D1B4F28BA2A0500EC285C /* Style */,
 				C16D1B4B28B9E64000EC285C /* ViewModel */,
 				C1E65B1A28B7A14100BFDD46 /* Sound */,
 				C1E65B1828B7A12300BFDD46 /* Util */,
