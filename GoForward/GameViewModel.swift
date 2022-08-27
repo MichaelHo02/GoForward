@@ -240,7 +240,9 @@ final class GameViewModel: ObservableObject {
     /// This function will act when user click on trash bin to deselect cards
     func resetCards() {
         Sound.play(sound: "cardShove1", type: "wav", category: .playback)
-        gameModel.deSelect(humanHand.filter({ $0.selected }), in: human)
+        withAnimation {
+            gameModel.deSelect(humanHand.filter({ $0.selected }), in: human)
+        }
     }
     
     /// This function will act when user press play button
