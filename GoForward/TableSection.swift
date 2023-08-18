@@ -31,6 +31,7 @@ struct TableSection: View {
             Rectangle()
                 .background(Color("Color6"))
                 .foregroundStyle(.bar)
+                .padding(.vertical, 20)
             ZStack {
                 ForEach(gameVM.deck.stack) { card in
                     CardView(cardName: "back")

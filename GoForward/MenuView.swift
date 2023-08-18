@@ -9,7 +9,7 @@
  Last modified: 27/08/2022
  Learning from Hacking with Swift to implement MVVM, and the usage of CoreData
  Hudson, P. (n.d.). The 100 days of Swiftui. Hacking with Swift. Retrieved July 30, 2022, from https://www.hackingwithswift.com/100/swiftui
-*/
+ */
 
 import SwiftUI
 
@@ -28,12 +28,30 @@ struct MenuView: View {
     
     var body: some View {
         VStack {
+            Text("Tien Len")
+                .font(.largeTitle)
+                .fontWeight(.heavy)
+                .foregroundColor(.red)
+                .padding(.top, 100)
+            Text("Go Forward")
+                .font(.title3)
+                .fontWeight(.light)
+                .multilineTextAlignment(.center)
+            
+            Spacer()
             if pageVM.isGameSaved {
                 Button(action: pageVM.visitResumePage) { resumeLabel }
+                Button(action: pageVM.visitGamePage) { playGameLabel }
+                    .buttonStyle(.bordered)
+            } else {
+                Button(action: pageVM.visitGamePage) { playGameLabel }
             }
-            Button(action: pageVM.visitGamePage) { playGameLabel }
             Button(action: pageVM.visitLeaderboardPage) { leaderboardLabel }
+                .buttonStyle(.bordered)
             Button(action: pageVM.visitHowToPlayPage) { howToPlayLabel }
+                .buttonStyle(.bordered)
+            Spacer()
+            Text("Developed by Ho Le Minh Thach")
         }
         .buttonStyle(.borderedProminent)
         .onAppear(perform: pageVM.playBGMusic)
