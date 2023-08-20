@@ -16,6 +16,8 @@ import SwiftUI
 struct MenuView: View {
     @EnvironmentObject var pageVM: PageViewModel
     @Environment(\.scenePhase) var scenePhase
+    @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
     
     let resumeLabel = Label("Resume", systemImage: "gamecontroller")
         .modifier(ButtonModifier())
@@ -27,33 +29,78 @@ struct MenuView: View {
         .modifier(ButtonModifier())
     
     var body: some View {
-        VStack {
-            Text("Tien Len")
-                .font(.largeTitle)
-                .fontWeight(.heavy)
-                .foregroundColor(.red)
-                .padding(.top, 100)
-            Text("Go Forward")
-                .font(.title3)
-                .fontWeight(.light)
-                .multilineTextAlignment(.center)
-            
-            Spacer()
-            if pageVM.isGameSaved {
-                Button(action: pageVM.visitResumePage) { resumeLabel }
-                Button(action: pageVM.visitGamePage) { playGameLabel }
-                    .buttonStyle(.bordered)
-            } else {
-                Button(action: pageVM.visitGamePage) { playGameLabel }
+        Group {
+            if horizontalSizeClass == .compact && verticalSizeClass == .regular {
+                VStack {
+                    Text("Tien Len")
+                        .font(.largeTitle)
+                        .fontWeight(.heavy)
+                        .foregroundColor(.red)
+                        .padding(.top, 30)
+                    Text("Go Forward")
+                        .font(.title3)
+                        .fontWeight(.light)
+                        .multilineTextAlignment(.center)
+                    Image("appIcon")
+                        .resizable()
+                        .frame(width: 200.0, height: 200.0)
+                    Spacer()
+                    if pageVM.isGameSaved {
+                        Button(action: pageVM.visitResumePage) { resumeLabel }
+                        Button(action: pageVM.visitGamePage) { playGameLabel }
+                            .buttonStyle(.bordered)
+                    } else {
+                        Button(action: pageVM.visitGamePage) { playGameLabel }
+                    }
+                    Button(action: pageVM.visitLeaderboardPage) { leaderboardLabel }
+                        .buttonStyle(.bordered)
+                    Button(action: pageVM.visitHowToPlayPage) { howToPlayLabel }
+                        .buttonStyle(.bordered)
+                    Spacer()
+                    Text("Developed by Ho Le Minh Thach")
+                }
+                .buttonStyle(.borderedProminent)
             }
-            Button(action: pageVM.visitLeaderboardPage) { leaderboardLabel }
-                .buttonStyle(.bordered)
-            Button(action: pageVM.visitHowToPlayPage) { howToPlayLabel }
-                .buttonStyle(.bordered)
-            Spacer()
-            Text("Developed by Ho Le Minh Thach")
+            else {
+                VStack(alignment: .center) {
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        VStack(alignment: .center) {
+                            Text("Tien Len")
+                                .font(.largeTitle)
+                                .fontWeight(.heavy)
+                                .foregroundColor(.red)
+                            Text("Go Forward")
+                                .font(.title3)
+                                .fontWeight(.light)
+                                .multilineTextAlignment(.center)
+                            Image("appIcon")
+                                .resizable()
+                                .frame(width: 100.0, height: 100.0)
+                        }
+                        Spacer()
+                        VStack(alignment: .center) {
+                            if pageVM.isGameSaved {
+                                Button(action: pageVM.visitResumePage) { resumeLabel }
+                                Button(action: pageVM.visitGamePage) { playGameLabel }
+                                    .buttonStyle(.bordered)
+                            } else {
+                                Button(action: pageVM.visitGamePage) { playGameLabel }
+                            }
+                            Button(action: pageVM.visitLeaderboardPage) { leaderboardLabel }
+                                .buttonStyle(.bordered)
+                            Button(action: pageVM.visitHowToPlayPage) { howToPlayLabel }
+                                .buttonStyle(.bordered)
+                        }
+                        Spacer()
+                    }
+                    .buttonStyle(.borderedProminent)
+                    Spacer()
+                    Text("Developed by Ho Le Minh Thach")
+                }
+            }
         }
-        .buttonStyle(.borderedProminent)
         .onAppear(perform: pageVM.playBGMusic)
         .onChange(of: scenePhase) { newPhase in
             switch (newPhase) {
